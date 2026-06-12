@@ -8,6 +8,37 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </head>
 <body>
-    
+    <!--Cabeçalho do jogo-->
+    <div class="container py-4">
+        <div class="text-center mb-4">
+            <h1 class="display-5 fw-bold">
+                <i class="bi bi-grid-3x3-gap-fill">Memory Game</i>
+            </h1>
+                <p class="text-black-50">Encontre pares e vença o relógio</p>
+        </div>
+    </div>
+    <!--Painel de estatísticas-->
+    <div class="row g-3 mb-4">
+        <div class="col-md-4">
+            <div class="game-card p-3 text-center">
+                <i class="bi bi-stopwatch fs-3 text-primary"></i>
+                <h6 class="mb-0">Tempo</h6>
+                <span class="stat-value" id="timer">00:00</span>
+            </div>    
+        </div>
+        <div class="col-md-4">
+            <div class="game-card p-3 text-center">
+                <i class="bi bi-arrows-move fs-3 text-success"></i>
+                <h6 class="mb-0">Movimentos</h6>
+                <span class="stat-value" id="moves">0</span>
+            </div>
+        </div>
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-4">
+
+        </div>
+    </div>
 </body>
 </html>
