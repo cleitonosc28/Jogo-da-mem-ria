@@ -49,8 +49,8 @@ function startGame(size){
     lockBoard = false;
     currentSize = size;
 
-    //Atualiza a interface com valores resetados
-    updateUI();
+    //Atualiza a interface com valores resetados / função abaixo do startGame
+    //updateUI();
     
     //Calcula quantas cartas serão necessárias
     const totalCards = size * size;
@@ -60,4 +60,59 @@ function startGame(size){
     const selectedIcons = icons.slice(0,totalPairs)
     //Array com os pares selecionados(cada ícone duas vezes)
     let cardIcons = [...selectedIcons, ...selectedIcons];
+
+    //Embaralhamento das cartas (algoritmo fisher-yates)
+    for (let i = cardIcons.length - 1; i>0; i--){
+        const j = Math.floor(Math.random() * (i+1));
+        [cardIcons[i],cardIcons[j]] = [cardIcons[j],cardIcons[i]] 
+    }
+
+    //Criar os objetos (cartas) com seus respectivos estados de execução
+    cards = cardIcons.map((icon,index) =>({
+        id: index,
+        icon: icon,
+        flipped: false,
+        matched: false
+    }));
+
+    //Função de renderização do tabuleiro (criada abaixo do startGame)
+    renderBoard();
+    //Função de iniciar o timer do jogo (criada abaixo do startGame)
+    startTime();
+    //Tocador de sons (criada abaixo do startGame)
+    playSound();
 }
+
+//Função de criação do tabuleiro (cria dinâmicamente baseado no estado)
+function renderBoard(){;
+    //Selecionamos o elemento html a ser manipulado
+    const board = document.getElementById('gameBoard')
+    //Calcula quantas colunas terá o grid (baseado no tamanho 4 ou 6)
+    const cols = currentSize;
+    //aplica o bootstrap a constante javascript
+    board.className = 'row g-2';
+    //limpa o conteúdo atual do tabuleiro
+    board.innerHTML = '';
+
+    //loop para criar cada carta individualmente
+    for(let i = 0; i<cards.length; i++){
+        const card = cards[i];
+        
+        //cria uma coluna no grid (responsivo)
+        const col = document.createElement('div');
+        col.className = 'col-${Math.floor(12/cols)}';
+
+        //Cria o HTML com as classes corretas
+        // se carta virada ou combinada mostra o ícone ou "?"
+        col.innerHTML = `
+            <div class = "memory-card ${card.flipped || card.matched ? 'flipped':''}
+            ${card.matched ? 'matched':''}
+            onclick="flipCard(${card.id})">
+                ${card.flipped || card.matched ? '<span>${card.icon}</span>' : '<i class = "bi bi-question-lg"></i>' }
+            </div>
+        `;
+        //Adicona  a coluna no tabuleiro
+        board.append(col);
+    }
+}
+
