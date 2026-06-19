@@ -184,7 +184,31 @@ function checkMatch(){
             gameVictory();
         }
 
-        
+        //limpa o array de cartas viradas
+        flippedCards = [];
+
+        //re-enderiza o tabuleiro
+        renderBoard();
+    }else{
+        //Par não encontrado
+        //trava o tabuleiro durante as animações
+        lockBoard = true;
+
+        //som de erooou
+        playSound('wrong');
+
+        //aguarda 800ms e depois desvira as cartas em caso de erro
+        setTimeout(()=>{
+            //Desvira as duas cartas
+            card1.flipped = false;
+            card2.flipped = false;
+
+            //Limpa a array de cartas viradas
+            flippedCards = [];
+
+            //Re-enderiza o tabuleiro
+            renderBoard();
+        },800);
     }
 }
 
