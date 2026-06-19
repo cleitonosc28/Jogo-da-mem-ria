@@ -120,5 +120,57 @@ function renderBoard(){;
 function flipCard(cardID){
     //Validações (impedem ações inválidas ou possíveis bugs)
     //Se a animação do tabuleiro demorar ele deve esperar
+    if (lockBoard) return;
+    //Se o jogo não está ativo, não faz nada
+    if(!gameActive) return;
+    //Se já tem 2 cartas viradas, não permite virar mais uma
+    if(flippedCards.length >= 2)return;
+    //Busca a carta pelo ID
+    const card = cards[cardID];
+    //Se carta já virada, não faz nada
+    if(card.flipped)return;
+    //Se a carta já foi combinada (matched), não faz nada
+    if(card.matched)return;
+    //Reenderiza o tabuleiro novamente para mostrar a carta virada
+    renderBoard();
+    //Toca o som de virar carta
+    playSound('flip');
+
+    //verificação: se temos 2 cartas viradas, verifica se tornou um par
+    if (flippedCards.length === 2){
+        //Incrementa o contador de movimento
+        moves++;
+        //Atualiza a interface com o novo número de movimentos
+        updateUI();
+        //Verifica a combinação
+        checkMatch();
+    }
+}
+
+//Função checkMatch, verifica se as cartas formam um par
+function checkMatch(){
+    //Pega as duas cartas viradas
+    const [card1, card2] = flippedCards;
+
+    //verifica se os ícones são iguais
+    if(card1.icon === card2.icon){
+        //se par econtrado, mas as duas cartas como "combinadas"
+        card1.matched = true;
+        card2.matched = true;
+
+        //Reseta o estado "virada" (não precisa mais)
+        card1.flipped = false;
+        card1.flipped = false;
+
+        //incrementa o contador de pares encontrados
+        matchedPairs++;
+
+        //calcula a pontuação (100 pontos por par)
+        const pointsEarned = 100;
+        score += pointsEarned;
+
+        //Atualiza interface com a nova pontuação
+        updateUI();
+    }
 }
 
