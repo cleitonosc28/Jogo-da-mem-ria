@@ -171,6 +171,22 @@ function checkMatch(){
 
         //Atualiza interface com a nova pontuação
         updateUI();
+
+        //toca som de "acertou" 
+        playSound('match');
+
+        //Adiciona animação de pulso nas cartas
+        highlightMatch(card1.id, card2.id);
+
+        //verifica se o jogo terminou
+        //se todos os pares combinaram, jogador venceu
+        if(matchedPairs === cards.length / 2){
+            gameVictory();
+        }
+
+        
     }
 }
+
+
 
