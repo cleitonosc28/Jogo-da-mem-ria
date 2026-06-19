@@ -116,3 +116,9 @@ function renderBoard(){;
     }
 }
 
+//Função de flipcard executa quando um jogador clica em uma carta
+function flipCard(cardID){
+    //Validações (impedem ações inválidas ou possíveis bugs)
+    //Se a animação do tabuleiro demorar ele deve esperar
+}
+
