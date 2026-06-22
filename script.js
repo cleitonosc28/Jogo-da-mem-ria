@@ -213,7 +213,17 @@ function checkMatch(){
 }
 
 function highlightMatch(cardId1, cardId2){
-    
+    //Seleciona todos os elementos das cartas
+    const cardsElements = document.querySelectorAll('.memory-card')
+
+    //adiciona uma classe de animação em cada carta
+    cardsElements.forEach(card => {
+        if(card.classList){
+            card.classList.add('match-animation');
+            //Remove a classe após 300ms (duração da animação)
+            setTimeout(()=> card.classList.remove('match-animation'),300)
+        }
+    });
 }
 
 
