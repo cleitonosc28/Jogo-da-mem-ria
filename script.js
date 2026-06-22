@@ -227,4 +227,31 @@ function highlightMatch(cardId1, cardId2){
 }
 
 //Função de "vitória", executa quando o jogador encontra todos os pares
+function gameVictory(){
+    //Desativa o jogo (para não receber mais cliques)
+    gameActive = false;
+    //parar o timer
+    clearInterval(timerInterval);
+    //Calcula bônus baseado no tempo restante (máximo de 300s - 5min)
+    const timeBonus = Math.max(0,300-timer) * 10;
+    //Calcula bônus baseado nos movimentos (quanto menos maior o bônus)
+    const movesBonus = Math.max(0,50-moves) * 5;
+    //calcula a pontuação total
+    const totalScore = score + timeBonus + movesBonus;
+    //toca o som de 'vitória'
+    const victoryModal = new bootstrap.Modal(documen.getElementById('victoryModal'));
 
+    //Cria um texto com as estatísticas do jogo
+    const statsText = `
+        <i class="bi bi-clock"></i> Tempo: ${formatTime(time)}<br>
+        <i class="bi bi-arrows-move"></i> Movimentos: ${(moves)}<br>
+        <i class="bi bi-star"></i> Bônus tempo: ${(timeBonus)}<br>
+        <i class="bi bi-star"></i> Bônus movimentos: ${(movesBonus)}<br>
+    `;
+
+    //insere os dados no modal
+    document.getElementById('victoryStats').innerHTML = statsText;
+    document.getElementById('finalScore').textContent = totalScore;
+    //mostra o modal
+    victoryModal.show();
+}
