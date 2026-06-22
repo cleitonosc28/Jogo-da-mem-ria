@@ -272,3 +272,25 @@ function updateUI(){
                                                     currentSize === 6 ? 2: 3;
 }
 
+//inicia o cronômetro do jogo
+function startTimer(){
+    //cria um intervalo que executa a cada 1 segundo (1000ms)
+    timerInterval = setInterval(() => {
+        //só incrementa tempo se o jogo estiver ativo
+        if(gameActive){
+            timer++;//incrementa o contador
+            //Atualiza o display do timer com formatação
+            document.getElementById('timer').textContent = formatTime(timer);
+        }
+    },1000);
+}
+
+//formto de tempo MM:SS
+function formatTime(seconds){
+    //calcula os minutos (divisão inteira)
+    const mins = Math.floor(seconds/60);
+    //calcula os segundos restantes
+    const secs = seconds % 60;
+    //retorna formatado com dois dígitos
+    return `${mins.toString().padStart(2,'0')}:${secs.toString().padStart(2,'0')}`;
+}
