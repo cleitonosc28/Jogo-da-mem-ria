@@ -255,3 +255,20 @@ function gameVictory(){
     //mostra o modal
     victoryModal.show();
 }
+
+//Função de reiniciar o jogo  com o mesmo tamanho anterior
+function resetGame(){
+    startGame(currentSize);
+}
+
+//função que atualiza a interface e todos os valores visuais
+function updateUI(){
+    //Atualiza o contador de movimentos
+    document.getElementById('moves').textContent = moves;
+    //Atualiza a pontuação
+    document.getElementById('score').textContent = score;
+    //Atualiza o nível (1 para 4x4, 2 para 6x6)
+    document.getElementById('level').textContent = currentSize === 4 ? 1: 
+                                                    currentSize === 6 ? 2: 3;
+}
+
