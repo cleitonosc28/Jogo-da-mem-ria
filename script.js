@@ -212,5 +212,8 @@ function checkMatch(){
     }
 }
 
+function highlightMatch(cardId1, cardId2){
+    
+}
 
 
