@@ -226,4 +226,5 @@ function highlightMatch(cardId1, cardId2){
     });
 }
 
+//Função de "vitória", executa quando o jogador encontra todos os pares
 
