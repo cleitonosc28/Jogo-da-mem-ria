@@ -41,3 +41,16 @@ body{
     cursor: default;
     opacity: 0.8;
 }
+
+.memory-card.desabled{
+    pointer-events: none;
+}
+
+@keyframes pulse {
+    0%, 100% {transform: scale(1);}
+    50% {transform: scale(0.80);}
+}
+
+.match-animation{
+    animation: pulse 0.3s ease-in-out;
+}

@@ -85,23 +85,24 @@
             </div>
         </div>
     <!--Modal(tela) de vitória / pop-up que aparece ao ganhar-->  
+        <!--Modal(tela) de vitória / pop-up que aparece ao ganhar-->  
     <div class="modal fade" id="victoryModal" data-bs-backdrop="static">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header bg-success">
-                    <h5 class="modal-title">Parabéns</h5>
-                    <i class="bi bi-trophy"></i>
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title">🎉 Parabéns!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body text-center">
                     <i class="bi bi-emoji-wink fs-1"></i>
                     <h3>Você venceu!</h3>
-                    <p id="victoryStats" class="mt-3"></p>
+                    <div id="victoryStats" class="mt-3"></div> <!-- CORRIGIDO: div em vez de p -->
                     <div class="alert alert-info">
                         Pontuação total: <strong id="finalScore">0</strong>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-primary" onclick="startGame(currentSize)">Jogar novamente</button>
+                    <button class="btn btn-primary" onclick="resetGame()">Jogar novamente</button>
                     <button class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                 </div>
             </div>    
