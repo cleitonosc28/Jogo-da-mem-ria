@@ -21,7 +21,7 @@ body{
     font-size: 4.5rem;
     transform-style: preserve-3d;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
-    min-height: 50%; /* Diminuído de 80px */
+    min-height: 40%; /* Diminuído de 80px */
     max-height: 80%; /* Adicionado para limitar altura */
     max-width: 80%; /* Adicionado para limitar largura */
     margin: 0 auto; /* Centraliza */
