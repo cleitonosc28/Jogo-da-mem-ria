@@ -26,3 +26,18 @@ body{
     max-width: 80%; /* Adicionado para limitar largura */
     margin: 0 auto; /* Centraliza */
 }
+
+.memory-card:hover{
+    transform: scale(1.1);
+}
+
+.memory-card.flipped, .memory-card.matched{
+    background: white;
+    transform: rotateY(360deg);
+}
+
+.memory-card.matched{
+    background: #50db91;
+    cursor: default;
+    opacity: 0.8;
+}
