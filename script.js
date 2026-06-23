@@ -100,16 +100,15 @@ function renderBoard(){;
         
         //cria uma coluna no grid (responsivo)
         const col = document.createElement('div');
-        col.className = 'col-${Math.floor(12/cols)}';
+        col.className = `col-${Math.floor(12/cols)}`;
 
         //Cria o HTML com as classes corretas
         // se carta virada ou combinada mostra o ícone ou "?"
         col.innerHTML = `
-            <div class = "memory-card ${card.flipped || card.matched ? 'flipped':''}
-            ${card.matched ? 'matched':''}
+        <div class="memory-card ${card.flipped || card.matched ? 'flipped' : ''} ${card.matched ? 'matched' : ''}" 
             onclick="flipCard(${card.id})">
-                ${card.flipped || card.matched ? '<span>${card.icon}</span>' : '<i class = "bi bi-question-lg"></i>' }
-            </div>
+            ${card.flipped || card.matched ? `<span>${card.icon}</span>` : '<i class="bi bi-question-lg"></i>'}
+        </div>
         `;
         //Adicona  a coluna no tabuleiro
         board.append(col);
