@@ -78,7 +78,7 @@ function startGame(size){
     //Função de renderização do tabuleiro (criada abaixo do startGame)
     renderBoard();
     //Função de iniciar o timer do jogo (criada abaixo do startGame)
-    startTime();
+    startTimer();
     //Tocador de sons (criada abaixo do startGame)
     playSound();
 }
@@ -238,7 +238,7 @@ function gameVictory(){
     //calcula a pontuação total
     const totalScore = score + timeBonus + movesBonus;
     //toca o som de 'vitória'
-    const victoryModal = new bootstrap.Modal(documen.getElementById('victoryModal'));
+    const victoryModal = new bootstrap.Modal(document.getElementById('victoryModal'));
 
     //Cria um texto com as estatísticas do jogo
     const statsText = `
