@@ -242,7 +242,7 @@ function gameVictory(){
 
     //Cria um texto com as estatísticas do jogo
     const statsText = `
-        <i class="bi bi-clock"></i> Tempo: ${formatTime(time)}<br>
+        <i class="bi bi-clock"></i> Tempo: ${formatTime(timer)}<br>
         <i class="bi bi-arrows-move"></i> Movimentos: ${(moves)}<br>
         <i class="bi bi-star"></i> Bônus tempo: ${(timeBonus)}<br>
         <i class="bi bi-star"></i> Bônus movimentos: ${(movesBonus)}<br>
